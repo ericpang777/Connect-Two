@@ -3,16 +3,16 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ContactsScreen from '../screens/ContactsScreen';
+import ConnectScreen from '../screens/ConnectScreen';
+import MyCardScreen from '../screens/MyCardScreen';
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+const ContactsStack = createStackNavigator({
+  Home: ContactsScreen,
 });
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+ContactsStack.navigationOptions = {
+  tabBarLabel: 'Contacts',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -25,12 +25,12 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const ConnectStack = createStackNavigator({
+  Connect: ConnectScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+ConnectStack.navigationOptions = {
+  tabBarLabel: 'Connect',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -39,12 +39,12 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const MyCardStack = createStackNavigator({
+  Settings: MyCardScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+MyCardStack.navigationOptions = {
+  tabBarLabel: 'My Card',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -54,7 +54,7 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+  ContactsStack,
+  ConnectStack,
+  MyCardStack,
 });
