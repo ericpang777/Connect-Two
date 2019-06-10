@@ -3,6 +3,7 @@ import {
   Image,
   Platform,
   ScrollView,
+  SectionList,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -12,6 +13,36 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+const names = [
+  {id: 1, title: 'Apple'},
+  {id: 2, title: 'Banana'},
+  {id: 3, title: 'Coconut'},
+  {id: 4, title: 'Apple'},
+  {id: 5, title: 'Banana'},
+  {id: 6, title: 'Coconut'},
+  {id: 7, title: 'Apple'},
+  {id: 8, title: 'Banana'},
+  {id: 9, title: 'Coconut'},
+  {id: 10, title: 'Apple'},
+  {id: 11, title: 'Banana'},
+  {id: 12, title: 'Coconut'},
+];
+
+const names2 = [
+  {id: 1, title: 'Banana'},
+  {id: 2, title: 'Coconut'},
+  {id: 3, title: 'Apple'},
+  {id: 4, title: 'Apple'},
+  {id: 5, title: 'Banana'},
+  {id: 6, title: 'Coconut'},
+  {id: 7, title: 'Apple'},
+  {id: 8, title: 'Banana'},
+  {id: 9, title: 'Coconut'},
+  {id: 10, title: 'Apple'},
+  {id: 11, title: 'Banana'},
+  {id: 12, title: 'Coconut'},
+];
+
 export default class ContactsScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -20,11 +51,25 @@ export default class ContactsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View>
-
-          </View>
-        </ScrollView>
+        <SectionList
+          sections={[
+            {title: 'A', data: names},
+            {title: 'B', data: names2},
+            {title: 'C', data: names2},
+            {title: 'D', data: names2},
+          ]}
+          renderItem={({ item }) => (
+            <View style={styles.row}>
+              <Text>{item.title}</Text>
+            </View>  
+          )}
+          renderSectionHeader={({ section }) => (
+            <View style={styles.sectionHeader}>
+              <Text>{section.title}</Text>
+            </View>  
+          )}
+          keyExtractor={(item) => item.id}
+        />
       </View>
     );
   }
@@ -149,5 +194,14 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',
+  },
+  sectionHeader: {
+    backgroundColor: '#efefef',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  row: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
 });
